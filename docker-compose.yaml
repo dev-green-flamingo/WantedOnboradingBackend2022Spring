@@ -1,0 +1,18 @@
+version: '3.7'
+
+services:
+  db:
+    image: mysql:latest
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_USER: mysql-user
+      MYSQL_PASSWD: user_passwd
+      MYSQL_ROOT_PASSWD: root_passwd
+      MYSQL_DATABASE: DB
+
+secrets:
+  user_passwd:
+    file: config/db_user_passwd.txt
+  root_passwd:
+    file: config/db_root_passwd.txt
